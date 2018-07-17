@@ -1,0 +1,241 @@
+<TextInput@TextInput>:
+	font_size: 100
+<Label@Label>:
+	font_size:60
+
+
+				
+<intrestapp>:
+    canvas:
+        Color:
+            rgb: 1, 1, 1
+        Rectangle:
+            source:'images (4).jpeg'
+            size: self.size
+	id: imp
+	display1: output
+	display2:output1
+	item:gold
+	itema:silver
+	item1:due
+	ka:k1
+	kb:k2
+	kc:k3
+	a1:a1
+	a2:a2
+	a3:a3
+    rows: 16
+    padding: 10
+    spacing: 10
+    
+	Label:
+		font_size:30
+		text: '[b]Garuda.inc[/b]'
+		canvas.before:
+			Color:
+				rgb: 1,0,0
+			Rectangle:
+				pos:self.pos
+				size:self.size 
+		markup: True
+		size_hint: (1,.2)
+	
+    BoxLayout:
+    	ToggleButton:
+    		id:gold
+    		text:'Gold'
+    		state: 'down'
+    		group:'a'
+  
+    	ToggleButton:
+    		id:silver
+    		group:'a'
+    		text:'silver'
+    		
+    	ToggleButton:
+    		text:'other'
+    		on_press:root.create1()
+    		group:'a'
+    
+	BoxLayout:
+		ToggleButton:
+			text:'0'
+			id:k1
+			group:'a2'
+		ToggleButton:
+			text:'1'
+			id:k2
+			group:'a2'	
+			state:'down'	
+		ToggleButton:
+			text:'month+date'
+			id:k3
+			group:'a2'	
+			
+
+	Label:
+		text: '[b]Enter Amount[/b]'
+		markup: True	
+			
+	BoxLayout:
+		TextInput:
+			id: amount
+			text:''
+			multiline:False
+		Button:
+			text:'[b]    change\ntoday  date[/b]'
+			on_press:root.create()
+			markup: True
+			font_size:40
+			size_hint:(0.5,1)
+	BoxLayout:
+		Label:
+			text: '[b]Enter Date[/b]'
+			markup: True
+		Button:
+			text:'¶'
+			id:a
+			size_hint:(0.125,1)
+			font_size:40
+			on_press:root.date()
+			on_release:root.clear()
+		TextInput:
+			text:''
+			id:a1
+			size_hint:(0.125,1)
+			readonly:True
+			font_size:40
+		TextInput:
+			text:''
+			id:a2
+			size_hint:(0.125,1)
+			readonly:True
+			font_size:40
+		TextInput:
+			text:''
+			id:a3
+			size_hint:(0.25,1)
+			readonly:True
+			font_size:40
+		 	
+			
+	BoxLayout:
+		spacing:10
+		padding:10
+		TextInput:
+			id: date
+			multiline:False
+			text:''	
+		TextInput:
+			id: month
+			multiline:False
+			text:''
+		TextInput:
+			id: year
+			text:''
+			size_hint:(1.7,1)
+			multiline:False
+				
+	BoxLayout:
+		size_hint:(1,0.1)
+			
+	BoxLayout:
+		size_hint:(1,0.5)
+		CheckBox:
+		    id:due
+			group:'a1'
+			size_hint:(0.1,1)
+			state:'down'
+		Label:
+			text:'[b] with compond  intrest \'6\' month                      [/b]'
+			font_size:50
+			markup: True
+			
+	BoxLayout:
+		size_hint:(1,0.5)
+		CheckBox:
+			group:'a1'
+			size_hint:(0.1,1)
+		Label:
+			text:'[b]only simple intrest every month                    [/b]'
+			font_size:50
+			markup: True
+		
+	BoxLayout:
+		size_hint:(1,0.1)
+		
+	Button:
+		text:'Ok'		
+		on_release:  root.app(amount.text,date.text,month.text,year.text)
+		
+	Label:
+		text: 'the total number of days is'
+	TextInput:
+		id: output
+		text:' '
+		readonly:True
+		markup: True
+		
+	Label:
+		text: 'the total amount is'
+	TextInput:
+		id: output1
+		text:' '
+		markup: True
+		readonly:True
+
+		
+<popu>
+	title:'Date - settings'
+	i:i
+	j:j
+	k:k
+	size_hint:(.75,.4)
+	GridLayout:
+		rows:3
+		Label:
+			text:'Enter the date'
+		BoxLayout:
+			TextInput:
+				text:root.date(1)
+				id:i
+				multiline:False
+			TextInput:
+				text:root.date(2)
+				multiline:False
+				id:j
+				multiline:False
+			TextInput:
+				text:root.date(3)
+				size_hint:(1.5,1)
+				id:k
+				multiline:False
+		BoxLayout:
+			Button:
+				text:'ok'
+				on_release:root.ok()
+			Button:
+				text:'cancel'
+				on_release:root.dismiss()
+					
+<popu1>
+	title:'Intrest - settings'
+	i:i
+	size_hint:(.75,.4)
+	GridLayout:
+		rows:3
+		Label:
+			text:'Enter the Intrest'
+		BoxLayout:
+			TextInput:
+				text:root.var()
+				multiline:False
+				id:i
+		BoxLayout:
+			Button:
+				text:'ok'
+				on_release:root.ok()
+			Button:
+				text:'cancel'
+				on_release:root.dismiss()
+				

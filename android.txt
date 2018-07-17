@@ -1,0 +1,3 @@
+title=INTREST-CALCULATOR
+author=datta
+orientation=portrait|landscape
